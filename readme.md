@@ -17,3 +17,8 @@
 
 ### День 1
 Начинаем проект - вывод даты
+
+### День 2
+Подключаем API и выводим данные о погоде\
+[API openweathermap](https://openweathermap.org/)\
+[API DOC](https://openweathermap.org/forecast5#geo5)
