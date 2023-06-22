@@ -36,3 +36,20 @@ export const fetchWeather = async (name) => {
     return { success: true, data };
   } else return { success: false };
 };
+
+export const fetchForecastWeather = async (name) => {
+  const coords = await fetchCityCoordsByName(name);
+  if (coords) {
+    const url = new URL("forecast", API_URL);
+    url.searchParams.append("appid", API_KEY);
+    url.searchParams.append("lat", coords.lat);
+    url.searchParams.append("lon", coords.lon);
+    url.searchParams.append("units", "metric");
+    url.searchParams.append("lang", "ru");
+    url.searchParams.append("cnt", "40");
+
+    const response = await fetch(url);
+    const data = await response.json();
+    return { success: true, data };
+  } else return { success: false };
+};

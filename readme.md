@@ -22,3 +22,6 @@
 Подключаем API и выводим данные о погоде\
 [API openweathermap](https://openweathermap.org/)\
 [API DOC](https://openweathermap.org/forecast5#geo5)
+
+### День 3
+Render Forecast\
