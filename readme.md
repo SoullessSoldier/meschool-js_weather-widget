@@ -24,4 +24,10 @@
 [API DOC](https://openweathermap.org/forecast5#geo5)
 
 ### День 3
-Render Forecast\
+Render Forecast
+
+### День 4
+фиксы ошибок, рендеринг блока в случае ошибочных геоданных
+
+
+Финал тут ==> [https://soullesssoldier.github.io/meschool-js_weather-widget/](https://soullesssoldier.github.io/meschool-js_weather-widget/)

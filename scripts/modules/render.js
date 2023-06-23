@@ -6,7 +6,7 @@ import {
   getMinMaxTempObj,
 } from "./utils.js";
 
-export const renderWidgetToday = (widget, data) => {
+export const renderWidgetToday = (widget, data, name, country) => {
   const { dayOfMonth, month, year, dayOfWeek, hours, minutes } = getDateTime();
   const weatherIcon = data.weather[0].icon;
   const mainTemp = `${data.main.temp.toFixed(1)}°C`;
@@ -23,7 +23,7 @@ export const renderWidgetToday = (widget, data) => {
       </div>
       <div class="widget__wheather">
         <div class="widget__city">
-        <p>Калининград</p>
+        <p>${name}, ${country}</p>
         <button
             class="widget__change-city"
             aria-label="Изменить город"
@@ -38,9 +38,7 @@ export const renderWidgetToday = (widget, data) => {
   widget.insertAdjacentHTML("beforeend", html);
 };
 export const renderWidgetOther = (widget, data) => {
-  const windSpeed = `${data.wind.speed} (${
-    data.wind.gust ? data.wind.gust : 0
-  }) м/с`;
+  const windSpeed = `${data.wind.speed}  м/с`;
   const windAngle = data.wind.deg;
   const humidity = `${data.main.humidity}%`;
   const pressure = `${calcPressure(data.main.pressure)}`;
@@ -103,8 +101,21 @@ export const renderWidgetForecast = (widget, data) => {
   widget.append(ul);
 };
 
-export const showError = (widget) => {
-  const html = `<h2>Error fetching data</h2>`;
+export const showError = (widget, name) => {
+  const html1 = `
+  <div class="widget__city widget__city_err">
+        <p>${name}</p>
+        <button
+            class="widget__change-city"
+            aria-label="Изменить город"
+        ></button>
+        </div>`;
+  const html2 = `
+  <h2>Error fetching data</h2>`;
   widget.classList.add("widget_error");
-  widget.insertAdjacentHTML("beforeend", html);
+  if (name) {
+    widget.insertAdjacentHTML("beforeend", html1 + html2);
+  } else {
+    widget.insertAdjacentHTML("beforeend", html2);
+  }
 };

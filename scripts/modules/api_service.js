@@ -17,6 +17,8 @@ export const fetchCityCoordsByName = async (name) => {
       ? {
           lat: geoData?.lat,
           lon: geoData?.lon,
+          nameRu: geoData?.local_names?.ru || geoData?.name,
+          country: geoData?.country,
         }
       : null;
   }
@@ -33,7 +35,12 @@ export const fetchWeather = async (name) => {
     url.searchParams.append("lang", "ru");
     const response = await fetch(url);
     const data = await response.json();
-    return { success: true, data };
+    return {
+      success: true,
+      name: coords.nameRu,
+      country: coords.country,
+      data,
+    };
   } else return { success: false };
 };
 
@@ -50,6 +57,6 @@ export const fetchForecastWeather = async (name) => {
 
     const response = await fetch(url);
     const data = await response.json();
-    return { success: true, data };
+    return { success: true, name: coords.nameRu, data };
   } else return { success: false };
 };
