@@ -100,7 +100,7 @@
   border: none;
   background-color: transparent;
   padding: 0;
-  background: transparent url("/icon/edit.svg") center/contain no-repeat;
+  background: transparent url("icon/edit.svg") center/contain no-repeat;
 }
 
 .widget__temp-big {
